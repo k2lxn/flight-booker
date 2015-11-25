@@ -1,0 +1,15 @@
+<h1>Flights#index</h1>
+
+<%= form_for @flight, url: { action: :index }, method: :post do |f| %>
+	<%= f.label :departs_from %>
+	<%= f.select :departs_from, @airports %>
+	
+	<%= f.label :arrives_at %>
+	<%= f.select :arrives_at, @airports %>
+	
+	<%= f.label :depart_time %>
+	<%= f.select :depart_time, @flight_dates %>
+	
+<%end%>
+
+<%= debug(@airports) %>

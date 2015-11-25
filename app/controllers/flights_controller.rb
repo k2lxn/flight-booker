@@ -10,5 +10,7 @@ class FlightsController < ApplicationController
 			flight_date = flight.depart_time.strftime("%m/%d/%Y")
 			@flight_dates.push(flight_date) unless @flight_dates.include?(flight_date)
 		end
+		
+		@passengers_options = (1..4).map {|i| [i.to_s, i]}
   end
 end

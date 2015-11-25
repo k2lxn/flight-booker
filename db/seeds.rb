@@ -1,21 +1,55 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-sfo = Airport.create(code: "SFO")
-lax = Airport.create(code: "LAX")
+# Airports
+sfo = Airport.create(code: "SFO", name: "San Francisco")
+lax = Airport.create(code: "LAX", name: "Los Angeles")
+jfk = Airport.create(code: "JFK", name: "John F. Kennedy")
+bos = Airport.create(code: "BOS", name: "Logan")
 
-Flight.create( depart_time: DateTime.strptime("12/05/2015 13:00", "%m/%d/%Y %H:%M"),
-							 duration: 155,
-							 departs_from_id: sfo.id,
-							 arrives_at_id: lax.id )
-							
-Flight.create( depart_time: DateTime.strptime("12/31/2015 08:00", "%m/%d/%Y %H:%M"),
-							 duration: 155,
-							 departs_from_id: lax.id,
-							 arrives_at_id: sfo.id )
+
+# Week of 12/5/2015 - 12/12/2015
+# Morning flights, SFO -> LAX
+7.times do |i|
+	date = DateTime.new(2015, 12, (5+i), 8, 35)	
+	Flight.create( depart_time: date, 
+								 duration: 155,
+							   departs_from_id: sfo.id,
+							   arrives_at_id: lax.id )
+end							 
+							 
+# Afternoon flights, SFO -> LAX
+7.times do |i|
+	date = DateTime.new(2015, 12, (5+i), 14, 20)	
+	Flight.create( depart_time: date, 
+								 duration: 155,
+							   departs_from_id: sfo.id,
+							   arrives_at_id: lax.id )
+end
+
+# Morning flights, LAX -> SFO
+7.times do |i|
+	date = DateTime.new(2015, 12, (5+i), 8, 5)	
+	Flight.create( depart_time: date, 
+								 duration: 145,
+							   departs_from_id: lax.id,
+							   arrives_at_id: sfo.id )
+end
+
+# Afternoon flights, LAX -> SFO	
+7.times do |i|
+	date = DateTime.new(2015, 12, (5+i), 13, 45)	
+	Flight.create( depart_time: date, 
+								 duration: 145,
+							   departs_from_id: lax.id,
+							   arrives_at_id: sfo.id )
+end
+
+
+
+
+
+						 

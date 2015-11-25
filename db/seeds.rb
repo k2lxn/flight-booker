@@ -7,4 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-airports = Airport.create([{ code: SFO }, { code: LAX }])
+sfo = Airport.create(code: "SFO")
+lax = Airport.create(code: "LAX")
+
+Flight.create( depart_time: DateTime.strptime("12/05/2015 13:00", "%m/%d/%Y %H:%M"),
+							 duration: 155,
+							 departs_from_id: sfo.id,
+							 arrives_at_id: lax.id )
+							
+Flight.create( depart_time: DateTime.strptime("12/31/2015 08:00", "%m/%d/%Y %H:%M"),
+							 duration: 155,
+							 departs_from_id: lax.id,
+							 arrives_at_id: sfo.id )

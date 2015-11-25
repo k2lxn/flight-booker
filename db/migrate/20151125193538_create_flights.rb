@@ -3,13 +3,10 @@ class CreateFlights < ActiveRecord::Migration
     create_table :flights do |t|
       t.datetime :depart_time
       t.integer :duration
-      t.integer :departs_from
-      t.integer :arrives_at
+      t.integer :departs_from_id
+      t.integer :arrives_at_id
 
       t.timestamps null: false
     end
-    
-    add_index :flights, :departs_from
-    add_index :flights, :arrives_at
   end
 end

@@ -3,9 +3,9 @@ class Flight < ActiveRecord::Base
 	belongs_to :arrives_at, class_name: "Airport"
 	
 	def self.search(departs_from, arrives_at, date)
-		Flight.where(departs_from_id: departs_from,
+		matches = Flight.where(departs_from_id: departs_from,
 									arrives_at_id: arrives_at,
-									date: date)
+									date: date)													
 	end
 	
 	def self.get_flight_dates

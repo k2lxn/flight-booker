@@ -1,0 +1,28 @@
+
+<%= form_tag("/bookings/new", method: "get") do %>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Departs</th>
+				<th></th>
+				<th>Arrives</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @matching_flights.each do |flight| %>
+			<tr>
+				<td><%= radio_button_tag(:flight_id, flight.id) %></td>
+				<td><%= flight.departs_from.code %></td>
+				<td><%= flight.depart_time.to_time.strftime('%H:%M') %></td>
+				<td><%= flight.arrives_at.code %></td>
+				<% arrive_time = (flight.depart_time.to_time) + (flight.duration * 60) %>
+				<td><%= arrive_time.to_time.strftime('%H:%M') %></td>
+			</tr>
+		</tbody>
+		<%end%>
+	</table>
+	
+	<%= submit_tag("Book flight") %>
+<%end%>

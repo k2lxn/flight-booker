@@ -1,14 +1,14 @@
-<h1>Flights#index</h1>
+<h1>Pick a flight</h1>
 
-<%= form_for @flight, url: { controller: "flights", action: "index" }, method: :get do |f| %>
+<%= form_for @flight, url: { controller: "flights", action: "index" }, method: :post do |f| %>
 	<%= f.label :departs_from %>
 	<%= f.select :departs_from, @airports %>
 	
 	<%= f.label :arrives_at %>
 	<%= f.select :arrives_at, @airports %>
 	
-	<%= f.label :depart_time %>
-	<%= f.select :depart_time, @flight_dates %>
+	<%= f.label :date %>
+	<%= f.select :date, @flight_dates %>
 	
 	<%= label_tag "passengers", "Number of passengers" %>
 	<%= select_tag "passengers", options_for_select(@passengers_options) %>
@@ -17,4 +17,8 @@
 	
 <%end%>
 
+
+
 <%= debug(params) %>
+
+<%= debug(@matching_flights) %>

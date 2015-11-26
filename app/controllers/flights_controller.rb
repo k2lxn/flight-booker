@@ -12,6 +12,11 @@ class FlightsController < ApplicationController
   		@matching_flights = Flight.search( flight_params[:departs_from],
   																			 flight_params[:arrives_at], 
   																		 	 flight_params[:date] )
+  	 
+  	  @selected_depart = flight_params[:departs_from]
+  	  @selected_arrive = flight_params[:arrives_at]
+  	  @selected_date = flight_params[:date]
+  	  @selected_passengers = params[:passengers]
   	end		
   																 
   end

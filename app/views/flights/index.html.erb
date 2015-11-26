@@ -2,16 +2,16 @@
 
 <%= form_for @flight, url: { controller: "flights", action: "index" }, method: :get do |f| %>
 	<%= f.label :departs_from %>
-	<%= f.select :departs_from, @airports %>
+	<%= f.select :departs_from, options_for_select(@airports, @selected_depart) %>
 	
 	<%= f.label :arrives_at %>
-	<%= f.select :arrives_at, @airports %>
+	<%= f.select :arrives_at, options_for_select(@airports, @selected_arrive) %>
 	
 	<%= f.label :date %>
-	<%= f.select :date, @flight_dates %>
+	<%= f.select :date, options_for_select(@flight_dates, @selected_date)%>
 	
 	<%= label_tag "passengers", "Number of passengers" %>
-	<%= select_tag "passengers", options_for_select(@passengers_options) %>
+	<%= select_tag "passengers", options_for_select(@passengers_options, @selected_passengers) %>
 	
 	<%= f.submit "Find flights" %>
 	
@@ -21,6 +21,8 @@
 <%= render 'flights/pick_flight' unless @matching_flights.nil? %>
 
 
+
+<!-- DEBUG -->
 <%= debug(params) %>
 
 <%= debug(@matching_flights) %>

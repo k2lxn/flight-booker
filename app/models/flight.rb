@@ -12,7 +12,7 @@ class Flight < ActiveRecord::Base
   	flight_dates = []
   	Flight.all.each do |flight|
 			flight_date = flight.date.strftime("%m/%d/%Y")
-			flight_dates.push([flight_date, flight.date]) unless flight_dates.include?(flight_date)
+			flight_dates.push([flight_date, flight.date]) unless flight_dates.include?([flight_date, flight.date])
 		end
 		flight_dates
   end
